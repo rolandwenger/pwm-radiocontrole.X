@@ -1,6 +1,11 @@
 *.workspace
 *.pdsbak
 *.obj
+*.DO
+*.EDF
+*.log
+*.sts
+*.rte
 funclist
 build/
 dist/
