@@ -42,6 +42,7 @@ void pwmEtablitValeur(unsigned char valeur) {
  */
 unsigned char pwmValeur(unsigned char canal) {
     // À faire.
+    return 0;
 }
 
 static unsigned char espacement = 0;
