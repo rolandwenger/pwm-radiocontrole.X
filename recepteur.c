@@ -10,6 +10,51 @@
  */
 static void recepteurInitialiseHardware() {
     // À faire.
+    
+    //Config Timer2
+	T2CONbits.TMR2ON = 1; // Active le tmr2
+    T2CONbits.T2OUTPS = 0;   // pas de division en sortie pour trm2
+    T2CONbits.T2CKPS = 1;   // dision du prescaler par 4, 0-125 en 2 ms
+	PR2 = 201; // interruption lorsque le timer dépasse 200
+    
+    // Activer les interruptions du temporisateur 2:
+    PIE1bits.TMR2IE = 1;      // Active les interruptions du TMR2.
+    IPR1bits.TMR2IP = 1;     // Interruptions de haute priorité
+    
+    // Activer le PWM sur CCP1
+    CCP1CONbits.CCP1M = 0xC; // Active le CCP1.
+	CCPTMRS0bits.C1TSEL = 0; // CCP1 branché sur tmr2
+	TRISCbits.RC2 = 0; // Active la sortie du CCP1.
+    
+    // Activer le PWM sur CCP3
+    CCP3CONbits.CCP3M = 0xC; // Active le CCP3.
+	CCPTMRS0bits.C3TSEL = 0; // CCP3 branché sur tmr2
+	TRISCbits.RC6 = 0; // Active la sortie du CCP3.
+    //PWM3CONbits.P3DC = 
+    
+    //config RB4
+    TRISBbits.RB4 = 1; //configure l'entrée RB4 comme entrée
+    
+    // Activer les interruptions:
+    RCONbits.IPEN = 1;          // Active les niveaux d'interruptions.
+    INTCONbits.GIEH = 1;        // Active les interruptions de haute priorité.
+    INTCONbits.GIEL = 1;        // Active les interruptions de basse priorité.
+    
+    
+    //config des ports
+    ANSELA=0;   //configure le port A comme digital
+    ANSELB=0;   //configure le port B comme digital
+    TRISAbits.RA4 = 1; //configure l'entrée RA4 comme entrée
+    TRISBbits.RB0 = 1; //configure l'entrée RB0 comme entrée
+    
+    // Activer le PWM sur CCP4
+    CCP4CONbits.CCP4M = 0xC; // Active le CCP4.
+	CCPTMRS1bits.C4TSEL = 0; // CCP4 branché sur tmr2
+    
+    // Activer le PWM sur CCP5
+    CCP5CONbits.CCP5M = 0xC; // Active le CCP5.
+	CCPTMRS1bits.C5TSEL = 0; // CCP5 branché sur tmr2
+    
 }
 
 /**
