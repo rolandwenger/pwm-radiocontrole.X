@@ -13,7 +13,7 @@ static unsigned char valeurCanal[PWM_NOMBRE_DE_CANAUX];
  * @return Une valeur entre 62 et 125.
  */
 unsigned char pwmConversion(unsigned char valeurGenerique) {
-    // À faire.
+    //Roland : Conversion de 0 à 255 en 62 à 125
     return 0;
 }
 
@@ -24,7 +24,7 @@ static unsigned char canalPret = 0;
  * @param canal Le numéro de canal.
  */
 void pwmPrepareValeur(unsigned char canal) {
-    // À faire.
+    //if lire les bouton si 1 sortie 1 et si 2 sortie 2
 }
 
 /**
@@ -54,8 +54,14 @@ static unsigned char espacement = 0;
  * @return 255 si il est temps d'émettre une pulse. 0 autrement.
  */
 unsigned char pwmEspacement() {
-    // À faire.
-    return 0;
+   int i=0;
+   if (i=0){
+         i++;
+       return 255;
+   } else if ((i!=0) && (i<=9)) {
+      i++;
+      return 0;
+   }
 }
 
 unsigned int capture[PWM_NOMBRE_DE_CANAUX];
