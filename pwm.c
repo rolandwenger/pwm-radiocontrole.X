@@ -13,8 +13,13 @@ static unsigned char valeurCanal[PWM_NOMBRE_DE_CANAUX];
  * @return Une valeur entre 62 et 125.
  */
 unsigned char pwmConversion(unsigned char valeurGenerique) {
-    //Roland : Conversion de 0 à 255 en 62 à 125
-    return 0;
+    unsigned char val1;
+    if (valeurGenerique > 0){
+        val1 = (valeurGenerique/4);
+        val1 = val1 +62;
+        return val1;
+    }
+    return 62;
 }
 
 static unsigned char canalPret = 0;
@@ -24,7 +29,13 @@ static unsigned char canalPret = 0;
  * @param canal Le numéro de canal.
  */
 void pwmPrepareValeur(unsigned char canal) {
-    //if lire les bouton si 1 sortie 1 et si 2 sortie 2
+    if (canal == 0){
+     canalPret = 0;   
+    //valeurCanal [0] = canalPret;
+    } else{
+     canalPret = 1;
+    //valeurCanal [1] = canalPret;
+    }
 }
 
 /**
@@ -32,7 +43,12 @@ void pwmPrepareValeur(unsigned char canal) {
  * @param valeur La valeur du canal.
  */
 void pwmEtablitValeur(unsigned char valeur) {
-    // À faire.
+    if (canalPret == 0){
+        valeurCanal [0]= pwmConversion(valeur);
+    } else{
+        valeurCanal [1]= pwmConversion(valeur);
+    }
+    //canalPret =  pwmConversion(valeur);
 }
 
 /**
@@ -41,8 +57,12 @@ void pwmEtablitValeur(unsigned char valeur) {
  * @return La valeur PWM correspondante au canal.
  */
 unsigned char pwmValeur(unsigned char canal) {
-    // À faire.
-    return 0;
+    if (canal == 0){
+        return valeurCanal [0];
+
+    } else {
+      return valeurCanal [1];
+    } 
 }
 
 static unsigned char espacement = 0;
@@ -54,14 +74,13 @@ static unsigned char espacement = 0;
  * @return 255 si il est temps d'émettre une pulse. 0 autrement.
  */
 unsigned char pwmEspacement() {
-   int i=0;
-   if (i=0){
-         i++;
-       return 255;
-   } else if ((i!=0) && (i<=9)) {
-      i++;
-      return 0;
-   }
+ 
+       espacement++;
+        if (espacement > PWM_ESPACEMENT) {
+        espacement = 0;
+        return 255;
+         }
+       return 0;
 }
 
 unsigned int capture[PWM_NOMBRE_DE_CANAUX];
@@ -88,7 +107,11 @@ void pwmCompleteCapture(unsigned char canal, unsigned int instant) {
  * Réinitialise le système PWM.
  */
 void pwmReinitialise() {
-    // À faire.
+    valeurCanal [0]=0;
+    valeurCanal [1]=0;
+   // canalPret = 0;
+    
+    espacement=0;
 }
 
 #ifdef TEST
