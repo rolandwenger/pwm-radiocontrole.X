@@ -58,16 +58,10 @@ void pwmEtablitValeur(unsigned char valeur) {
  */
 unsigned char pwmValeur(unsigned char canal) {
     if (canal == 0){
-<<<<<<< HEAD
         return valeurCanal [0];
 
     } else {
       return valeurCanal [1];
-=======
-        return valeurCanal[0];
-    } else {
-      return valeurCanal[1];
->>>>>>> 0b36d6b53fa9879c7e6f77ebbdc2d5041981c964
     } 
 }
 
@@ -80,7 +74,7 @@ static unsigned char espacement = 0;
  * @return 255 si il est temps d'émettre une pulse. 0 autrement.
  */
 unsigned char pwmEspacement() {
-<<<<<<< HEAD
+
  
        espacement++;
         if (espacement > PWM_ESPACEMENT) {
@@ -88,21 +82,7 @@ unsigned char pwmEspacement() {
         return 255;
          }
        return 0;
-=======
-   unsigned char val;
-   switch(espacement){
-        case 0:
-            val=255;
-            break;
-       default:
-            val=0;
-    }
-       espacement++;
-        if (espacement > 6){
-        espacement = 0;
-         }
-       return val;
->>>>>>> 0b36d6b53fa9879c7e6f77ebbdc2d5041981c964
+
 }
 
 unsigned int capture[PWM_NOMBRE_DE_CANAUX];
@@ -151,20 +131,19 @@ void pwmCompleteCapture(unsigned char canal, unsigned int instant) {
  * Réinitialise le système PWM.
  */
 void pwmReinitialise() {
-<<<<<<< HEAD
     valeurCanal [0]=0;
     valeurCanal [1]=0;
    // canalPret = 0;
     
     espacement=0;
-=======
-    valeurCanal[0]=0;
+    
+    
+    /*valeurCanal[0]=0;
     valeurCanal[1]=0;
     capture[0] = 0;
     capture[1] = 0;
    // canalPret = 0;
-   //espacement=0;
->>>>>>> 0b36d6b53fa9879c7e6f77ebbdc2d5041981c964
+   //espacement=0;   */
 }
 
 #ifdef TEST

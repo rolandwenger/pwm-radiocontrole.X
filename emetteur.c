@@ -63,11 +63,11 @@ static void emetteurInitialiseHardware() {
 	T2CONbits.TMR2ON = 1; // Active le tmr2
     T2CONbits.T2OUTPS = 0;   // pas de division en sortie pour trm2
     T2CONbits.T2CKPS = 1;   // dision du prescaler par 4, 0-125 en 2 ms
-<<<<<<< HEAD
+
 	PR2 = 201; // interruption lorsque le timer dépasse 20
-=======
-	PR2 = 125; // interruption lorsque le timer dépasse 20
->>>>>>> 0b36d6b53fa9879c7e6f77ebbdc2d5041981c964
+
+	//PR2 = 125; // interruption lorsque le timer dépasse 20
+
     
     // Activer le PWM sur CCP1
     CCP1CONbits.CCP1M = 0xC; // Active le CCP1.
