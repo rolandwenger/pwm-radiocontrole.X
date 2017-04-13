@@ -5,6 +5,7 @@
  * Initialise le hardware pour l'émetteur.
  */
 static void emetteurInitialiseHardware() {
+<<<<<<< HEAD
     ANSELB = 0;
     //config des ports
     TRISBbits.RB1 = 1; //configure l'entrée RB1 comme entrée
@@ -20,6 +21,27 @@ static void emetteurInitialiseHardware() {
     ADCON0bits.CHS = 0b1001; // configuration de la conversion analogique sur an9
     ADCON2bits.ADFM = 0;    // Les 8 bits plus signifiants sur ADRESH.
     
+=======
+    ANSELA = 0; // mettre en entrée le portA
+    ANSELB = 0;
+   
+    TRISBbits.RB4 = 1; //configure l'entrée RB4 comme entrée
+    
+    //config des ports
+    TRISBbits.RB1 = 1; //configure l'entrée RB1 comme entrée
+    TRISBbits.RB2 = 1; //configure l'entrée RB2 comme entrée
+    INTCON2bits.RBPU=0;// active les résistances de tirage
+    WPUBbits.WPUB1=1;   //active la résistance de tirage du port RB1
+    WPUBbits.WPUB2=1;   //active la résistance de tirage du port RB2
+
+    //Conversion analogique digital
+    ANSELBbits.ANSB3 = 1; //configuration comme entrée analogique,
+    TRISBbits.RB3=1;//configure le port RB3 comme entrée
+    ADCON0bits.ADON = 1;    // active le module de conversion
+    ADCON0bits.CHS = 0b1001; // configuration de la conversion analogique sur an9
+    ADCON2bits.ADFM = 0;    // Les 8 bits plus signifiants sur ADRESH.
+    
+>>>>>>> 0b36d6b53fa9879c7e6f77ebbdc2d5041981c964
      // Activer les interruptions:
     RCONbits.IPEN = 1;          // Active les niveaux d'interruptions.
     INTCONbits.GIEH = 1;        // Active les interruptions de haute priorité.
@@ -41,7 +63,11 @@ static void emetteurInitialiseHardware() {
 	T2CONbits.TMR2ON = 1; // Active le tmr2
     T2CONbits.T2OUTPS = 0;   // pas de division en sortie pour trm2
     T2CONbits.T2CKPS = 1;   // dision du prescaler par 4, 0-125 en 2 ms
+<<<<<<< HEAD
 	PR2 = 201; // interruption lorsque le timer dépasse 20
+=======
+	PR2 = 125; // interruption lorsque le timer dépasse 20
+>>>>>>> 0b36d6b53fa9879c7e6f77ebbdc2d5041981c964
     
     // Activer le PWM sur CCP1
     CCP1CONbits.CCP1M = 0xC; // Active le CCP1.
