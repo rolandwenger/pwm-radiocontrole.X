@@ -5,7 +5,7 @@
  * Initialise le hardware pour l'émetteur.
  */
 static void emetteurInitialiseHardware() {
-<<<<<<< HEAD
+
     ANSELB = 0;
     //config des ports
     TRISBbits.RB1 = 1; //configure l'entrée RB1 comme entrée
@@ -21,8 +21,8 @@ static void emetteurInitialiseHardware() {
     ADCON0bits.CHS = 0b1001; // configuration de la conversion analogique sur an9
     ADCON2bits.ADFM = 0;    // Les 8 bits plus signifiants sur ADRESH.
     
-=======
-    ANSELA = 0; // mettre en entrée le portA
+
+   /* ANSELA = 0; // mettre en entrée le portA
     ANSELB = 0;
    
     TRISBbits.RB4 = 1; //configure l'entrée RB4 comme entrée
@@ -40,8 +40,9 @@ static void emetteurInitialiseHardware() {
     ADCON0bits.ADON = 1;    // active le module de conversion
     ADCON0bits.CHS = 0b1001; // configuration de la conversion analogique sur an9
     ADCON2bits.ADFM = 0;    // Les 8 bits plus signifiants sur ADRESH.
-    
->>>>>>> 0b36d6b53fa9879c7e6f77ebbdc2d5041981c964
+    */
+        
+        
      // Activer les interruptions:
     RCONbits.IPEN = 1;          // Active les niveaux d'interruptions.
     INTCONbits.GIEH = 1;        // Active les interruptions de haute priorité.

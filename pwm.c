@@ -112,7 +112,7 @@ void pwmCompleteCapture(unsigned char canal, unsigned int instant) {
         if (instant >= capture[0]){
            capture[0] = (instant - capture[0]); 
         } else {
-            capture[0] = (65536 - capture[0]);
+            capture[0] = (65535 - capture[0]);
             capture[0] = (instant + capture[0]); 
         }       
         valeurCanal[0] = capture[0];
@@ -120,7 +120,7 @@ void pwmCompleteCapture(unsigned char canal, unsigned int instant) {
         if (instant >= capture[1]){
            capture[1] = (instant - capture[1]); 
         } else {
-            capture[1] = (65536 - capture[1]);
+            capture[1] = (65535 - capture[1]);
             capture[1] = (instant + capture[1]); 
         } 
         valeurCanal[1] = capture[1];
