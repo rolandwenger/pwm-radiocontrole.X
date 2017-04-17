@@ -65,7 +65,7 @@ static void emetteurInitialiseHardware() {
     T2CONbits.T2OUTPS = 0;   // pas de division en sortie pour trm2
     T2CONbits.T2CKPS = 1;   // dision du prescaler par 4, 0-125 en 2 ms
 
-	PR2 = 201; // interruption lorsque le timer dépasse 20
+	PR2 = 201; // interruption lorsque le timer dépasse 200
 
 	//PR2 = 125; // interruption lorsque le timer dépasse 20
 
@@ -79,22 +79,7 @@ static void emetteurInitialiseHardware() {
     CCP3CONbits.CCP3M = 0xC; // Active le CCP3.
 	CCPTMRS0bits.C3TSEL = 0; // CCP3 branché sur tmr2
 	TRISCbits.RC6 = 0; // Active la sortie du CCP3.
-    
-    /*   ANSELA = 0;
-    ANSELB = 0;
-    ANSELC = 0;
-  
-    //config RB4
-    TRISBbits.RB4 = 1; //configure l'entrée RB4 comme entrée
-     
-    
-    
  
-    //PWM3CONbits.P3DC = 
-    
-    ANSELBbits.ANSB3 = 1; //configuration comme entrée analogique,
-    TRISBbits.RB3=1;//configure le port RB3 comme entrée 
-*/
 }
 
 /**
